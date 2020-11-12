@@ -6,16 +6,15 @@
         // 1. read data from the form
         const requestData = new FormData(formElement);
         // 2. call the application server using fetch method
-        const response = await fetch("api/Item",
+        const response = await fetch("api/company",
             {
                 body: requestData,
                 method: "post"
             });
-        console.log(response);
 
-        const responseJson = await response.json();
+        //const responseJson = await response.json();
 
-        if (responseJson.success) {
+        if (response.status === 200) {
             alertElement.style.display = 'block';
         }
     };
@@ -26,4 +25,4 @@
             addNewItem().then(() => console.log("added successfully"));
         });
     });
-})();
+})();
